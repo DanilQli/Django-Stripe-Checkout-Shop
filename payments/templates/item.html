@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <title>Buy {{ item.name }}</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+      #card-element {
+        padding: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{ item.name }}</h1>
+    <p>{{ item.description }}</p>
+    <p>Цена: {{ item.price }} {{ item.currency|upper }}</p>
+
+    <div id="card-element"></div>
+    <button id="pay-button">Оплатить</button>
+
+    <script>
+      const stripe = Stripe('{{ stripe_public_key }}');
+
+      let elements = stripe.elements();
+      let card = elements.create('card');
+      card.mount('#card-element');
+
+      document.getElementById("pay-button").addEventListener("click", function () {
+        fetch("/create-payment-intent/{{ item.id }}/")
+          .then(res => res.json())
+          .then(data => {
+            stripe.confirmCardPayment(data.clientSecret, {
+              payment_method: {
+                card: card,
+              }
+            }).then(function(result) {
+              if (result.error) {
+                alert("Ошибка: " + result.error.message);
+              } else {
+                if (result.paymentIntent.status === 'succeeded') {
+                  alert("Оплата прошла успешно!");
+                }
+              }
+            });
+          });
+      });
+    </script>
+  </body>
+</html>
