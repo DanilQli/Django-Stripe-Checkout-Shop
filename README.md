@@ -74,7 +74,7 @@ docker-compose up --build
 - 🛒 Товар: https://yourusername.pythonanywhere.com/item/1
 - 📦 Заказ: https://yourusername.pythonanywhere.com/order/1
 - 🔐 Admin: https://yourusername.pythonanywhere.com/admin
-- - Логин: dani
+- - Логин: danil
 - - Пароль: 111
 
 🧠 Бонусные фичи
