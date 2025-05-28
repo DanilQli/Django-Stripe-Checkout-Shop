@@ -71,9 +71,9 @@ docker-compose up --build
 - .env добавлен в .gitignore (не попадает в Git)
 
 📡 Демо
-- 🛒 Товар: https://yourusername.pythonanywhere.com/item/1
-- 📦 Заказ: https://yourusername.pythonanywhere.com/order/1
-- 🔐 Admin: https://yourusername.pythonanywhere.com/admin
+- 🛒 Товар: https://lobste48.pythonanywhere.com/item/1
+- 📦 Заказ: https://lobste48.pythonanywhere.com/order/1
+- 🔐 Admin: https://lobste48.pythonanywhere.com/admin/
 - - Логин: danil
 - - Пароль: 111
 
